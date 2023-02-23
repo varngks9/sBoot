@@ -17,11 +17,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Run') {
-			steps {
-				sh './scripts/deliver.sh'
-			}
-		}
+		
 		
 	}
 }
