@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gksboot
+  name: gksboot
+  namespace: vgk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gksboot
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gksboot
+    spec:
+      containers:
+      - image: varungks/gksboot:latest
+        name: gksboot
+        resources: {}
+status: {i}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gksboot
+  name: gksboot
+  namespace: vgk
+spec:
+  ports:
+  - name: 8090-8090
+    port: 8090
+    protocol: TCP
+    targetPort: 8090
+  selector:
+    app: gksboot
+  type: LoadBalancer
+status:
+  loadBalancer: {}
